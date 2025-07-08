@@ -1,7 +1,7 @@
 import Post from "./Post"
 
 const Feed = ()=>{
-    return <div>Feed
+    return <div className="border-border-gray border-1">
         <Post/>
         <Post/>
         <Post/>
