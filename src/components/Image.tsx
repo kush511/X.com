@@ -17,6 +17,7 @@ export default function CustomImage({tr, src, w, h, alt, className}: ImageType) 
         width={w}     // Map w to width
         height={h}    // Map h to height  
         alt={alt}
+        
         {...(tr ? { 
           transformation: [{
             width: w,

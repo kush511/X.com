@@ -85,7 +85,7 @@ export default function Leftbar(){
         </div>
         {/* Button  */}
         <Link href="/" className='bg-white text-black rounded-full xxl:hidden   w-12 h-12 flex justify-center'>
-        <Image src="/icons/post.svg" alt='new post' width={24} height={24}></Image>
+        <Image src="/icons/post.svg"  alt='new post'  style={{ width: "auto", height: "auto" }} width={24} height={24}></Image>
         </Link>
 
         <Link href="/" className='hidden  xxl:block text-black px-20 py-2 bg-white rounded-full font-bold '>

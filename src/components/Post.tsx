@@ -10,7 +10,7 @@ const Post = ()=>{
         <div className="flex items-center gap-2 text-sm text-text-gray font-bold mb-2">
            <div className="h-4 w-4"> 
   <CustomImage  
-    src="https://ik.imagekit.io/mkhidgljz4/public/svg/repost.svg?updatedAt=1751949856030" 
+    src="/public/svg/repost.svg" 
     alt="repost" 
     h={15} 
     w={15}
@@ -23,7 +23,7 @@ const Post = ()=>{
         <div className="flex gap-4">
             {/* pfp  */}
             <div className="relative h-10 w-10 rounded-full overflow-hidden">
-                <CustomImage tr={true} src="https://ik.imagekit.io/mkhidgljz4/public/general/pfp.png?updatedAt=1751954676188" w={100} h={100} alt="profile"/>
+                <CustomImage tr={true} src="/public/general/pfp.png" w={100} h={100} alt="profile"/>
             </div>
             {/* Content  */}
             <div className="flex-1 flex flex-col gap-2">
@@ -39,7 +39,7 @@ const Post = ()=>{
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit blanditiis ab corporis recusandae deleniti, repellat corrupti, modi obcaecati ipsam distinctio cupiditate pariatur rem minima, temporibus officia quam minus sunt! Saepe!
                 Repellat, dicta non. Repudiandae, similique earum. Dolore, rem nemo doloremque accusantium magni perferendis id aspernatur impedit soluta ipsa assumenda ea enim sint adipisci eum explicabo laborum. Recusandae accusantium sit excepturi!
                 Delectus tempore qui, sequi amet autem nam temporibus cupiditate vero eius nemo pariatur veniam, est at hic maiores excepturi harum rerum? Autem ipsa voluptas enim ut dicta deserunt! Iusto, possimus.</p>
-                <CustomImage w={500} h={500} src="https://ik.imagekit.io/mkhidgljz4/public/posts/image.png?updatedAt=1751957419419" alt="postimg" />
+                <CustomImage w={500} h={500} src="/public/posts/image.png" alt="postimg" />
                 <PostInteraction/>
                 </div>
                 

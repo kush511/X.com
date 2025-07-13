@@ -10,9 +10,9 @@ export default function Home() {
         <Link href="/" className='pb-3 flex items-center relative before:absolute before:bottom-0 before:left-0 before:right-0 before:h-1 before:bg-icon-blue before:rounded-full'>
           For you
         </Link>
-        <Link  href="/" className='pb-3 flex items-center  '>Following</Link>
-        <Link  href="/" className='pb-3 flex items-center  '>Computers are retarded</Link>
-        <Link  href="/" className='pb-3 flex items-center  '>Build in silence</Link>
+        <Link  href="/" className='pb-3 hidden md:flex items-center  '>Following</Link>
+        <Link  href="/" className='pb-3 hidden md:flex items-center  '>Computers are retarded</Link>
+        <Link  href="/" className='pb-3 hidden md:flex items-center  '>Build in silence</Link>
       </div>
       <Share/>
   <Feed/>
