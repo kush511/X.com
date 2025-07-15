@@ -1,12 +1,10 @@
 "use server"
 
-import ImageKit from 'imagekit';
+import { imagekit } from "./utils";
 
-const imagekit = new ImageKit({
-    publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY!,
-    privateKey: process.env.PRIVATE_KEY!,
-    urlEndpoint: process.env.NEXT_PUBLIC_URL_ENDPOINT!,
-});
+
+
+
 
 
 
@@ -25,9 +23,9 @@ imagekit.upload({
     file:buffer,
     fileName:file.name,
     folder:"/public/posts",
-    transformation:{
+   ...(file.type.includes("image") && {transformation:{
         pre:transformation,
-    },
+    }}),
     customMetadata:{
         sensitive:settings.sensitive
     }

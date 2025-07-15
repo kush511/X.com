@@ -23,7 +23,7 @@ const ImageEditor = ({ onClose, previewUrl, settings, setSettings }: {
         setSettings(prev => ({ ...prev, type }))
     }
     return (
-        <div className="fixed inset-0 bg-black/5 bg-white/5 z-10 flex items-center justify-center">
+        <div className="fixed inset-0  bg-white/5 z-10 flex items-center justify-center">
             <div className="bg-black rounded-xl p-8 flex flex-col gap-4 max-w-[700px] w-[90vw]">
                 {/* top  */}
                 <div className='flex items-center justify-between'>

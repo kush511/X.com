@@ -17,6 +17,8 @@ const Share = () => {
         sensitive: false,
     })
 
+
+
     function handleMediaChange(e: React.ChangeEvent<HTMLInputElement>) {
         if (e.target.files && e.target.files[0]) {
             setMedia(e.target.files[0])
@@ -25,7 +27,7 @@ const Share = () => {
 
     const previewUrl = media ? URL.createObjectURL(media) : null;
 
-    return <form className="p-4 flex gap-4" action={formData => shareAction(formData,settings)}>
+    return <form className="p-4 flex gap-4" action={formData => shareAction(formData, settings)}>
         <div className="relative h-13 w-13 rounded-full overflow-hidden">
             <CustomImage
                 src="public/general/pfp.png"
@@ -39,30 +41,39 @@ const Share = () => {
                 type="text"
                 placeholder="What's happening?" />
             {/* //preview image  */}
-            {
+            {media?.type.includes("image") &&
                 previewUrl && (<div className="relative rounded-xl overflow-hidden">
                     <Image className={`w-full h-full
                     ${settings.type === "original"
-                                ? "object-contain"
-                                : settings.type === "square"
-                                    ? "aspect-square object-cover"
-                                    : "aspect-video object-cover"}`} src={previewUrl} alt="" width={600} height={600}></Image>
-                    <div onClick={()=>setIsEditorOpen(true)}
-                     className="absolute top-2 left-2 bg-black/50  text-white py-1 px-4 rounded-full font-bold text-sm cursor-pointer">
+                            ? "object-contain"
+                            : settings.type === "square"
+                                ? "aspect-square object-cover"
+                                : "aspect-video object-cover"}`} src={previewUrl} alt="" width={600} height={600}></Image>
+                    <div onClick={() => setIsEditorOpen(true)}
+                        className="absolute top-2 left-2 bg-black/50  text-white py-1 px-4 rounded-full font-bold text-sm cursor-pointer">
                         Edit
                     </div>
+                     <div onClick={()=>setMedia(null)} className="absolute top-2 right-2 text-sm  bg-black/60 cursor-pointer text-white h-8 w-8 flex items-center justify-center rounded-full">x</div>
                 </div>
                 )}
+            {
+                media?.type.includes("video") && previewUrl && (
+                    <div className="relative">
+                        <video src={previewUrl}></video>
+                        <div onClick={()=>setMedia(null)} className="absolute top-2 right-2 text-sm  bg-black/60 cursor-pointer text-white h-8 w-8 flex items-center justify-center rounded-full">x</div>
+                    </div>
+                )
+            }
             {isEditorOpen && previewUrl && <ImageEditor
                 onClose={() => setIsEditorOpen(false)}
-                settings = {settings}
-                previewUrl = {previewUrl}
-                setSettings = {setSettings}
- />}
+                settings={settings}
+                previewUrl={previewUrl}
+                setSettings={setSettings}
+            />}
 
             <div className="flex items-center justify-between gap-4 flex-wrap">
                 <div className="flex gap-4 flex-wrap">
-                    <input name="file" id="image-upload" hidden type="file" onChange={handleMediaChange} />
+                    <input accept="image/*,videos/*" name="file" id="image-upload" hidden type="file" onChange={handleMediaChange} />
                     <label htmlFor="image-upload"><Image alt="" src="/icons/image.svg" width={20} height={20} className="cursor-pointer" />
                     </label>
                     <Image alt="" src="/icons/gif.svg"

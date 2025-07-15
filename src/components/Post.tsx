@@ -2,8 +2,34 @@ import { Image } from "@imagekit/next"
 import CustomImage from "./Image"
 import PostInfo from "./PostInfo"
 import PostInteraction from "./PostInteraction"
+import { imagekit } from "@/utils"
+import Video from "./Video"
 
-const Post = ()=>{
+const Post = async ()=>{
+    interface FileDetailsResponse{
+        width:number;
+        height:number;
+        url:string;
+        filePath:string;
+        fileType:string;
+        customMetadata?:{sensitive:boolean};
+    }
+
+    const getFileDetails = async (fileId:string):Promise=>{
+        return new Promise((resolve,reject)=>{
+            imagekit.getFileDetails(fileId,function (error,result) {
+                if(error) reject(error);
+                else resolve(result as FileDetailsResponse);
+                
+                
+            })
+        })
+    }
+
+    const fileDetails  = await getFileDetails("6873cb825c7cd75eb8709248")
+
+    console.log(fileDetails);
+    
     return(
         <div className="p-4 border-y-[1px] text-border-gray">
         {/* post type  */}
@@ -39,7 +65,13 @@ const Post = ()=>{
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit blanditiis ab corporis recusandae deleniti, repellat corrupti, modi obcaecati ipsam distinctio cupiditate pariatur rem minima, temporibus officia quam minus sunt! Saepe!
                 Repellat, dicta non. Repudiandae, similique earum. Dolore, rem nemo doloremque accusantium magni perferendis id aspernatur impedit soluta ipsa assumenda ea enim sint adipisci eum explicabo laborum. Recusandae accusantium sit excepturi!
                 Delectus tempore qui, sequi amet autem nam temporibus cupiditate vero eius nemo pariatur veniam, est at hic maiores excepturi harum rerum? Autem ipsa voluptas enim ut dicta deserunt! Iusto, possimus.</p>
-                <CustomImage w={500} h={500} src="/public/posts/image.png" alt="postimg" />
+                {/* <CustomImage w={500} h={500} src="/public/posts/image.png" alt="postimg" /> */}
+               {fileDetails && fileDetails.fileType === "image" ?(<CustomImage src={fileDetails.filePath}
+                alt="" 
+                w={fileDetails.width}
+                 h={fileDetails.height}
+                className={fileDetails.customMetadata?.sensitive ? "blur-lg":""}/>)
+                :<Video path={fileDetails.filePath} className={fileDetails.customMetadata?.sensitive ? "blur-lg":""}/>}
                 <PostInteraction/>
                 </div>
                 

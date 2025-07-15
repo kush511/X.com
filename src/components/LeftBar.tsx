@@ -53,7 +53,7 @@ const menuList = [
   {
     id: 9,
     name: "Profile",
-    link: "/",
+    link: "/kiri",
     icon: "profile.svg",
   },
   {
